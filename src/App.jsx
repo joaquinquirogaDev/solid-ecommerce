@@ -1,18 +1,35 @@
-import logo from './logo.svg';
-import styles from './App.module.css';
-import { createMemo, createSignal, lazy } from 'solid-js';
-import { Router, Route, Routes} from "@solidjs/router"
-// import { Routes } from 'solid-app-router';
-// import Home from './Components/Home/Home'
-const Home = lazy(() => import('./Components/Home/Home'))
-export default function App(){
+import { lazy, Suspense } from 'solid-js';
+import { Router, Route, Routes, Link } from "@solidjs/router"
+import Header from './pages/Header/Header';
+const Home = lazy(() => import('./pages/Home/Home'))
+const Prueba = lazy(() => import('./pages/Prueba/Prueba'))
+const Productos = lazy(() => import('./pages/Productos/Productos'))
+const Categorias = lazy(() => import('./pages/Categorias/Categorias'))
+const Detalles = lazy(() => import('./pages/Detalles/Detalles'))
+const Favoritos = lazy(() => import('./pages/Favoritos/Favoritos'))
+const Perfil = lazy(() => import('./pages/Perfil/Perfil'))
 
-  return (
-        
-        <Router>
-          <Routes>
-            <Route path='/' exact component={Home} />
-          </Routes>
-        </Router>
-  )
+export default function App() {
+
+  return <>
+
+    <Router>
+      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+      
+        <Routes>
+          <Route path="/" component={Home} />
+          <Route path="/prueba" component={Prueba} />
+          <Route path="/productos" component={Productos} />
+          <Route path="/categorias" component={Categorias} />
+          <Route path="/detalles" component={Detalles} />
+          <Route path="/favoritos" component={Favoritos} />
+          <Route path="/perfil" component={Perfil} />
+
+        </Routes>
+      </Suspense>
+
+    </Router>
+
+  </>
 }

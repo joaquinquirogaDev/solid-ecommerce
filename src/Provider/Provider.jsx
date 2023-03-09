@@ -1,31 +1,29 @@
-import { createContext, createSignal, useContext} from "solid-js";
+import { createContext, createEffect, createSignal, useContext} from "solid-js";
 import { createStore } from "solid-js/store";
 
-export const ContextCount = createContext();
+const ContextCount = createContext();
 
 export function Provider(props){
-    const [count, setCount] = createSignal(props.count ?? 0);
-    const [data, setData] = createSignal({name: 'Joaquin', edad: '24'})
-    const counter = [
-      count,
-      {
-        increment() {
-          setCount((c) => c + 1);
-        },
-        decrement() {
-          setCount((c) => c - 1);
-        }
-      },
+    const [data, setData] = createSignal('')
+    const [favoritos, setFavoritos] = createSignal([])
+    createEffect(() => {
+      const dataInfo = JSON.parse(localStorage.getItem('data')) || []
+      const favorito = JSON.parse(localStorage.getItem('fav')) || []
+      setData(dataInfo)
+      setFavoritos(favorito)
+    })
+    const store = {
       data,
-      setData
-    ];
+      setData,
+      favoritos,
+      setFavoritos
+    }
     return (
-        <ContextCount.Provider value={counter}>
+        <ContextCount.Provider value={store}>
           {props.children}
         </ContextCount.Provider>
       );
 }  
 
-export function useCounter() {
-    return useContext(ContextCount);
-  }
+export const useCounter = () => useContext(ContextCount)
+  

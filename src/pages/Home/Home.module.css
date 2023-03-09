@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.container h1 {
+    font-size: 40px;
+}

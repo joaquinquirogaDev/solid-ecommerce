@@ -4,14 +4,10 @@ import { render } from 'solid-js/web';
 import './index.css';
 import App from './App';
 import { Provider } from './Provider/Provider';
+import { Router } from 'solid-start/islands/server-router';
+
 
 const root = document.getElementById('root');
-
-if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
-  throw new Error(
-    'Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got mispelled?',
-  );
-}
 
 render(() =>
   <Provider>

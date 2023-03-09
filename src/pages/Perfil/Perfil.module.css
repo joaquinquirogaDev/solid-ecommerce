@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.container h1{
+    font-size: 50px;
+}
+.container h2{
+    font-size: 40px;
+}
