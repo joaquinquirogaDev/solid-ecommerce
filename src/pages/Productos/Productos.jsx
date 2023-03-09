@@ -23,6 +23,10 @@ export default function Productos() {
                         <div className={style.description}>
                             {elemento?.descripcion}
                         </div>
+                        <div className={style.precio}>
+                            Precio: <h1 className={elemento.descuento ? style.tachado : style.nice}>{elemento.precio}</h1>
+                            <h1>{elemento.descuento ? elemento.precio - elemento.descuento : ''}</h1>
+                        </div>
                         <div className={style.Buttons}>
                             <button onClick={() => {
                                 const nuevo1 = favoritos().some((e) => e.id === elemento.id)
@@ -30,9 +34,9 @@ export default function Productos() {
                                 nuevo() ? undefined : setFavoritos([...favoritos(), elemento])
                             }
                             }
-                                >
-                                   {favoritos().some((e) => e.id === elemento.id) ? <AiFillHeart/> : <AiOutlineHeart/>}</button>
-                            <button onClick={() => navigate(`/detalles`, {state: {item: elemento}})}>Detalle</button>
+                            >
+                                {favoritos().some((e) => e.id === elemento.id) ? <AiFillHeart /> : <AiOutlineHeart />}</button>
+                            <button onClick={() => navigate(`/detalles`, { state: { item: elemento } })}>Detalle</button>
                         </div>
                     </div>
                 )}

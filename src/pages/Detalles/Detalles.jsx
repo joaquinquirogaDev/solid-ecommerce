@@ -28,7 +28,7 @@ export default function Detalles() {
                     Descripcion: {data()?.descripcion}
                 </div>
                 <div className={style.description}>
-                    Precio: <h1 className={data().descuento ? style.tachado : style.nice}>{data().precio}</h1>
+                    <p>Precio:</p><h1 className={data().descuento ? style.tachado : style.nice}>{data().precio}</h1>
                     <h1>{data().descuento ? data().precio - data().descuento : ''}</h1>
                 </div>
                 <div className={style.description}>

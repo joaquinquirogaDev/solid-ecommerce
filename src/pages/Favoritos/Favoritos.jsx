@@ -33,7 +33,7 @@ export default function Favoritos() {
                                 setFavoritos(nuevos)
                                 localStorage.setItem('fav', favoritos())
                             }}><AiFillDelete /></button>
-                            <button onClick={() => navigate(`/detalles`, )}>Detalle</button>
+                            <button onClick={() => navigate(`/detalles`, { state: { item: elemento } })}>Detalle</button>
                         </div>
                     </div>
                 )}
