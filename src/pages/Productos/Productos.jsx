@@ -13,10 +13,11 @@ export default function Productos() {
     const navigate = useNavigate()
     createEffect(() => {
         localStorage.setItem('fav', JSON.stringify(favoritos()))
+        console.log(nuevaData());
     })
     const handleClick = () => {
-        const infoFilter = data().filter((e) => e.categoria == busqueda() || e.nombre == busqueda())
-        setNuevaData(infoFilter);
+        const infoFilter = data().filter((e) => e.categoria == busqueda() || e.nombre == busqueda()) 
+        infoFilter.length == 0 ? undefined : setNuevaData(infoFilter);
     }
     return (
 
