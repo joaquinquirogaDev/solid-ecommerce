@@ -47,7 +47,15 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    gap: 5px;
+    padding: 20px;
 }
 .Imagen p{
+    color: black;
+}
+.tachado{
+    text-decoration: line-through;
+}
+.nice{
     color: black;
 }

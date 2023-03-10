@@ -4,39 +4,29 @@ import { createEffect, createSignal } from 'solid-js'
 import { AiOutlineShoppingCart } from 'solid-icons/ai'
 import { useCounter } from '../../Provider/Provider'
 export default function Header() {
-    const { data, setData, favoritos, setFavoritos, cantidad, setCantidad, total, setTotal } = useCounter()
+    const { data, setData, favoritos, setFavoritos, cantidad, setCantidad, total, setTotal, count, setCount} = useCounter()
     const [apertura, setApertura] = createSignal(false)
     const [dataFiltrada, setDataFiltrada] = createSignal(cantidad())
     const [categorias, setCategorias] = createSignal([])
     createEffect(() => {
         console.log(cantidad())
-        function uniqBy(a, key) {
-            var seen = {};
-            return a.filter(function (item) {
-                var k = key(item);
-                return seen.hasOwnProperty(k) ? false : (seen[k] = true);
-            })
-        }
-        const RemoveDuplicateArray = (array = []) => {
-            const b = uniqBy(array, JSON.stringify).filter((e) => e);
-            return b
-        }
-        setCategorias(RemoveDuplicateArray(cantidad()?.map((item) => {
-            return item.categoria
-        })))
-
-        const addFilter = (value, key = "") => {
-            setDataFiltrada((prevState) => {
-              return { ...prevState, [key]: value }
-            })
-          }
-        const filtrado = cantidad().filter(e => e.categoria == categorias())
-        // filterData()
-        console.log(filtrado);
-        addFilter(filtrado, categorias())
-        console.log(dataFiltrada())
+        console.log(total());
     })
-    return (
+    const onDelete = () => {
+        setCantidad([])
+        setTotal(0)
+        setCount(0)
+    }
+    const onDeleteProduct = elemento => {
+		const results = cantidad().filter(
+			item => item.id !== elemento.id
+		);
+
+		setTotal(total() == 0 ? setTotal(0) : total() - elemento?.precio * elemento?.cantidad_a_comprar);
+		setCount(count() == 0 ? setCount(0) : count() - elemento?.cantidad_a_comprar);
+		setCantidad(results);
+	};
+        return (
         <header className={style.header}>
             <ul>
                 <li>
@@ -64,18 +54,21 @@ export default function Header() {
                         Agregue productos al carrito
                     </div>
                 </Show>
-                <For each={dataFiltrada()}>
+                <For each={cantidad()}>
 
                     {(item) => (
                         <div className={style.Imagen}>
                         
                             <img src="" alt="" />
+                            <p>{item?.cantidad_a_comprar + 1}</p>
                             <p>{item?.nombre}</p>
-                            <p>{item?.precio}</p>
+                            Precio: <h1 className={item.descuento ? style.tachado : style.nice}>{item.precio}</h1>
+                            <h1>{item.descuento ? item.precio - item.descuento : ''}</h1>
+                            <button onClick={() => onDeleteProduct(item)}>X</button>
                         </div>
                     )}
                 </For>
-                <button onClick={() => setCantidad([])}>Vaciar carrito</button>
+                <button onClick={() => onDelete()}>Vaciar carrito</button>
                 <p>Total: {total()}</p>
             </div>
 
