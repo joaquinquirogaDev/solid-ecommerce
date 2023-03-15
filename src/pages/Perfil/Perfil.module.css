@@ -12,3 +12,13 @@
 .container h2{
     font-size: 40px;
 }
+.Imagen{
+    width: 18%;
+    border-radius: 50%;
+}
+.Imagen img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 50%;
+}

@@ -28,25 +28,25 @@ export default function Header() {
 	};
         return (
         <header className={style.header}>
-            <ul>
+            <ul className={style.UL}>
                 <li>
-                    <Link href="/">Home</Link>
+                    <Link style={{color: 'white'}} href="/">Home</Link>
                 </li>
                 <li>
-                    <Link href="/productos">Productos</Link>
+                    <Link style={{color: 'white'}} href="/productos">Productos</Link>
                 </li>
                 <li>
-                    <Link href="/perfil">Perfil</Link>
+                    <Link style={{color: 'white'}} href="/perfil">Perfil</Link>
                 </li>
                 <li>
-                    <Link href="/categorias">Categorias</Link>
+                    <Link style={{color: 'white'}} href="/categorias">Categorias</Link>
                 </li>
                 <li>
-                    <Link href="/favoritos">Favoritos</Link>
+                    <Link style={{color: 'white'}} href="/favoritos">Favoritos</Link>
                 </li>
             </ul>
 
-            <button onClick={() => setApertura(!apertura())}><AiOutlineShoppingCart /></button>
+            <button className={style.button2} onClick={() => setApertura(!apertura())}><AiOutlineShoppingCart /></button>
 
             <div className={apertura() ? style.apertura : style.aperturaCerrar}>
                 <Show when={cantidad()?.length == 0} >

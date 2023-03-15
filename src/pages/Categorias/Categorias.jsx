@@ -46,11 +46,11 @@ export default function Categorias() {
         <>
             <div className={style.containerItems}>
 
-                <button type="button" value="Todos" onClick={(e) => setItemCategoria(e.target.value)}>Todos</button>
+                <button className={style.button2} role="button" type="button" value="Todos" onClick={(e) => setItemCategoria(e.target.value)}>Todos</button>
                 <For each={categorias()} fallback={<div>Cargando...</div>}>
                     {(elemento) => (
                         <ul>
-                            <button type="button" value={elemento} onClick={(e) => setItemCategoria(e.target.value)}>{elemento}</button>
+                            <button className={style.button2} role="button" type="button" value={elemento} onClick={(e) => setItemCategoria(e.target.value)}>{elemento}</button>
                         </ul>
                     )}
                 </For>
@@ -61,15 +61,15 @@ export default function Categorias() {
                 <For each={itemCategoria() == 'Todos' ? data() : itemsFiltrados()}>
                     {(elemento) => (
                         <div className={style.card}>
-                            <div className={style.img}>
-                                <img src="" alt="" />
+                           <div className={style.Imagen}>
+                                <img src={elemento.img} alt="" />
                             </div>
                             <h1>{elemento?.nombre}</h1>
                             <div className={style.description}>
                                 {elemento?.descripcion}
                             </div>
                             <div className={style.Buttons}>
-                                <button onClick={() => {
+                                <button className={style.button2} role="button" onClick={() => {
                                     const nuevo1 = favoritos().some((e) => e.id === elemento.id)
                                     setNuevo(nuevo1)
                                     nuevo() ? undefined : setFavoritos([...favoritos(), elemento])
@@ -77,7 +77,7 @@ export default function Categorias() {
                                 }
                                 >
                                     {favoritos().some((e) => e.id === elemento.id) ? <AiFillHeart /> : <AiOutlineHeart />}</button>
-                                <button onClick={() => navigate(`/detalles`, { state: { item: elemento } })}>Detalle</button>
+                                <button className={style.button2} role="button" onClick={() => navigate(`/detalles`, { state: { item: elemento } })}>Detalle</button>
                             </div>
                         </div>
                     )}

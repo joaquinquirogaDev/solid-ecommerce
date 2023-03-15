@@ -14,7 +14,7 @@ export default function Home() {
     console.log(data());
     return (
         <div className={style.container}>
-           <h1>Bienvenidos al Ecommerce bro</h1>
+           <h1>Bienvenidos al Ecommerce</h1>
         </div>
     )
 }

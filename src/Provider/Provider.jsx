@@ -9,6 +9,7 @@ export function Provider(props){
     const [cantidad, setCantidad] = createSignal([])
     const [total, setTotal] = createSignal(0)
     const [count, setCount] = createSignal(0)
+
     createEffect(() => {
       const dataInfo = JSON.parse(localStorage.getItem('data')) || []
       const favorito = JSON.parse(localStorage.getItem('fav')) || []
@@ -31,7 +32,7 @@ export function Provider(props){
       total,
       setTotal,
       count,
-      setCount
+      setCount,
     }
     return (
         <ContextCount.Provider value={store}>
