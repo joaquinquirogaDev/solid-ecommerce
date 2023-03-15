@@ -1,0 +1,1 @@
+import{u as e,i as l,t as r}from"./index-305ae3a4.js";const n=r("<h1>hola </h1>",2);function a(){console.log("hola");const{carrito:t}=e();return console.log(t()),(()=>{const o=n.cloneNode(!0);return o.firstChild,l(o,t,null),o})()}export{a as default};
