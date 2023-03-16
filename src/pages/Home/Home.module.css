@@ -2,7 +2,8 @@
     width: 100%;
     display: grid;
     place-items: center;
-    min-height: 100vh;
+    height: 85vh;
+    /* min-height: 100vh; */
 }
 
 .container h1 {

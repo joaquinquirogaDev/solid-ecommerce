@@ -20,6 +20,7 @@
   "dependencies": {
     "@mui/icons-material": "^5.11.11",
     "@solidjs/router": "^0.7.0",
+    "pnpm": "^7.29.3",
     "solid-icons": "^1.0.4",
     "solid-js": "^1.6.10",
     "solid-meta": "^0.28.1",

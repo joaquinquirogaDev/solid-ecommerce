@@ -1,7 +1,7 @@
 .container{
     /* width: 100%; */
     height: auto;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)) !important;
     align-items: center;
@@ -41,7 +41,7 @@
     padding: 20px;
 }
 .containerInput{
-    width: 100%;
+    /* width: 100%; */
     margin: 20px;
     display: flex;
     align-items: center;
@@ -61,6 +61,7 @@
     justify-content: center;   
     padding: 20px;
     flex-direction: row;
+    gap: 20px;
 }
 .Buttons{
     display: flex;
@@ -72,7 +73,7 @@
     text-decoration: line-through;
 }
 .nice{
-    color: black;
+    color: white;
 }
 
 

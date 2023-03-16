@@ -74,8 +74,13 @@ export default function Productos() {
                                 {elemento?.descripcion}
                             </div>
                             <div className={style.precio}>
-                                Precio: <h1 className={elemento.descuento ? style.tachado : style.nice}>{elemento.precio}</h1>
-                                <h1>{elemento.descuento ? elemento.precio - elemento.descuento : ''}</h1>
+                                Precio:
+                                <h1 className={elemento.descuento ? style.tachado : style.nice}>
+                                    {elemento.precio}
+                                </h1>
+                                <h1>
+                                    {elemento.descuento ? elemento.precio - elemento.descuento : ''}
+                                </h1>
                             </div>
 
                             <br />

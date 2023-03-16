@@ -1,10 +1,11 @@
 .container{
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    height: 85vh;
 }
 .container h1{
     font-size: 50px;
