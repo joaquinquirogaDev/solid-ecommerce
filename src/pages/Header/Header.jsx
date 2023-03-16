@@ -4,7 +4,7 @@ import { createEffect, createSignal } from 'solid-js'
 import { AiOutlineShoppingCart } from 'solid-icons/ai'
 import { useCounter } from '../../Provider/Provider'
 export default function Header() {
-    const { data, setData, favoritos, setFavoritos, cantidad, setCantidad, total, setTotal, count, setCount} = useCounter()
+    const { data, setData, favoritos, setFavoritos, cantidad, setCantidad, total, setTotal, count, setCount } = useCounter()
     const [apertura, setApertura] = createSignal(false)
     const [dataFiltrada, setDataFiltrada] = createSignal(cantidad())
     const [categorias, setCategorias] = createSignal([])
@@ -18,31 +18,31 @@ export default function Header() {
         setCount(0)
     }
     const onDeleteProduct = elemento => {
-		const results = cantidad().filter(
-			item => item.id !== elemento.id
-		);
+        const results = cantidad().filter(
+            item => item.id !== elemento.id
+        );
 
-		setTotal(total() == 0 ? setTotal(0) : total() - elemento?.precio * elemento?.cantidad_a_comprar);
-		setCount(count() == 0 ? setCount(0) : count() - elemento?.cantidad_a_comprar);
-		setCantidad(results);
-	};
-        return (
+        setTotal(total() == 0 ? setTotal(0) : total() - elemento?.precio * elemento?.cantidad_a_comprar);
+        setCount(count() == 0 ? setCount(0) : count() - elemento?.cantidad_a_comprar);
+        setCantidad(results);
+    };
+    return (
         <header className={style.header}>
             <ul className={style.UL}>
                 <li>
-                    <Link style={{color: 'white'}} href="/">Home</Link>
+                    <Link style={{ color: 'white' }} href="/">Home</Link>
                 </li>
                 <li>
-                    <Link style={{color: 'white'}} href="/productos">Productos</Link>
+                    <Link style={{ color: 'white' }} href="/productos">Productos</Link>
                 </li>
                 <li>
-                    <Link style={{color: 'white'}} href="/perfil">Perfil</Link>
+                    <Link style={{ color: 'white' }} href="/perfil">Perfil</Link>
                 </li>
                 <li>
-                    <Link style={{color: 'white'}} href="/categorias">Categorias</Link>
+                    <Link style={{ color: 'white' }} href="/categorias">Categorias</Link>
                 </li>
                 <li>
-                    <Link style={{color: 'white'}} href="/favoritos">Favoritos</Link>
+                    <Link style={{ color: 'white' }} href="/favoritos">Favoritos</Link>
                 </li>
             </ul>
 
@@ -57,19 +57,20 @@ export default function Header() {
                 <For each={cantidad()}>
 
                     {(item) => (
-                        <div className={style.Imagen}>
-                        
-                            <img src="" alt="" />
+                        <div className={style.ContainerDatos}>
+                            <div className={style.Imagen}>
+                                <img src={item.img} alt="" />
+                            </div>
                             <p>{item?.cantidad_a_comprar + 1}</p>
                             <p>{item?.nombre}</p>
-                            Precio: <h1 className={item.descuento ? style.tachado : style.nice}>{item.precio}</h1>
+                            $<h1 className={item.descuento ? style.tachado : style.nice}>{item.precio}</h1>
                             <h1>{item.descuento ? item.precio - item.descuento : ''}</h1>
                             <button onClick={() => onDeleteProduct(item)}>X</button>
                         </div>
                     )}
                 </For>
-                <button onClick={() => onDelete()}>Vaciar carrito</button>
                 <p>Total: {total()}</p>
+                {cantidad().length == 0 ? undefined : <button className={style.buttonVaciar} onClick={() => onDelete()}>Vaciar carrito</button>}
             </div>
 
         </header>

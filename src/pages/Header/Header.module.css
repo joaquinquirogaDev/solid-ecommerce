@@ -18,7 +18,7 @@
     gap: 50px;
 }
 .apertura{
-    width: 300px;
+    width: 30%;
     height: auto;
     background-color: white;
     display: block;
@@ -28,6 +28,11 @@
     border-radius: 20px;
     border: 1px solid black;
     background-color: #8AC389;
+    min-height: 20vh;
+    z-index: 99999;
+}
+.apertura p{
+  text-align: center;
 }
 .aperturaCerrar{
     display: none;
@@ -43,15 +48,29 @@
     width: 100%;
     height: auto;
 }
-.Imagen{
+.ContainerDatos{
     width: 100%;
     height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 5px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
+}
+.ContainerDatos h1{
+  font-size: 20px;
+}
+.Imagen{
+  width: 25%;
+  /* height: 20%; */
+  border-radius: 20px 20px 20px 20px;
+}
+.Imagen img{
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 20px;
 }
 .Imagen p{
     color: black;
@@ -130,4 +149,20 @@
   
   .button-17:disabled {
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+  }
+  .buttonVaciar{
+    width: 100%;
+    color: white;
+    border-radius: 0px 0px 20px 20px;
+    padding: 20px;
+    background-color: black;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
   }

@@ -23,7 +23,7 @@ export default function Productos() {
             return total + item.precio * item.cantidad_a_comprar;
         }, 0);
         setTotal(totalPrice)
-        console.log(busqueda())
+        console.log(count())
         console.log(nuevaData());
     })
     const handleClick = () => {
@@ -36,7 +36,7 @@ export default function Productos() {
         if (cantidad().find(item => item?.id === elemento?.id)) {
             const productos = cantidad().map(item =>
                 item?.id === elemento?.id
-                    ? { ...item, cantidad_a_comprar: item?.cantidad_a_comprar + 1 }
+                    ? { ...item, cantidad_a_comprar: (item?.cantidad_a_comprar) + 1 }
                     : item
             )
 
