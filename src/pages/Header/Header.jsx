@@ -61,11 +61,17 @@ export default function Header() {
                             <div className={style.Imagen}>
                                 <img src={item.img} alt="" />
                             </div>
+                            <div className={style.cantidad}>
                             <p>{item?.cantidad_a_comprar + 1}</p>
+                            </div>
+                            <div className={style.name}>
                             <p>{item?.nombre}</p>
-                            $<h1 className={item.descuento ? style.tachado : style.nice}>{item.precio}</h1>
+                            </div>
+                            <div className={style.descuento}>
+                            <h1 className={item.descuento ? style.tachado : style.nice}>{item.precio}</h1>
                             <h1>{item.descuento ? item.precio - item.descuento : ''}</h1>
-                            <button onClick={() => onDeleteProduct(item)}>X</button>
+                            </div>
+                            <button className={style.button2} role="button"  onClick={() => onDeleteProduct(item)}>X</button>
                         </div>
                     )}
                 </For>
