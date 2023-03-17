@@ -6,11 +6,9 @@ import { useCounter } from '../../Provider/Provider'
 export default function Header() {
     const { data, setData, favoritos, setFavoritos, cantidad, setCantidad, total, setTotal, count, setCount } = useCounter()
     const [apertura, setApertura] = createSignal(false)
-    const [dataFiltrada, setDataFiltrada] = createSignal(cantidad())
-    const [categorias, setCategorias] = createSignal([])
+ 
     createEffect(() => {
         console.log(cantidad())
-        console.log(total());
     })
     const onDelete = () => {
         setCantidad([])
@@ -54,26 +52,30 @@ export default function Header() {
                         Agregue productos al carrito
                     </div>
                 </Show>
+
                 <For each={cantidad()}>
 
                     {(item) => (
-                        <div className={style.ContainerDatos}>
-                            <div className={style.Imagen}>
-                                <img src={item.img} alt="" />
+                        <>
+                            <div className={style.ContainerDatos}>
+                                <div className={style.Imagen}>
+                                    <img src={item.img} alt="" />
+                                </div>
+                                <div className={style.cantidad}>
+                                    <p>{item?.cantidad_a_comprar + 1}</p>
+                                </div>
+                                <div className={style.name}>
+                                    <p>{item?.nombre}</p>
+                                </div>
+                                <div className={style.descuento}>
+                                    <h1 className={item.descuento ? style.tachado : style.nice}>{item.precio }</h1>
+                                    <h1>{item.descuento ? item.precio - item.descuento : ''}</h1>
+                                </div>
+                                <button className={style.button2} role="button" onClick={() => onDeleteProduct(item)}>X</button>
                             </div>
-                            <div className={style.cantidad}>
-                            <p>{item?.cantidad_a_comprar + 1}</p>
-                            </div>
-                            <div className={style.name}>
-                            <p>{item?.nombre}</p>
-                            </div>
-                            <div className={style.descuento}>
-                            <h1 className={item.descuento ? style.tachado : style.nice}>{item.precio}</h1>
-                            <h1>{item.descuento ? item.precio - item.descuento : ''}</h1>
-                            </div>
-                            <button className={style.button2} role="button"  onClick={() => onDeleteProduct(item)}>X</button>
-                        </div>
-                    )}
+                        </>
+                    )
+                    }
                 </For>
                 <p>Total: {total()}</p>
                 {cantidad().length == 0 ? undefined : <button className={style.buttonVaciar} onClick={() => onDelete()}>Vaciar carrito</button>}

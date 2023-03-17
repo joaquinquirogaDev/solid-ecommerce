@@ -37,6 +37,11 @@
 .apertura p{
   text-align: center;
   color: black;
+  
+}
+.apertura h1{
+  text-align: center;
+  color: black;
 }
 .aperturaCerrar{
     display: none;
@@ -64,6 +69,7 @@
 }
 .ContainerDatos h1{
   font-size: 20px;
+  color: black;
 }
 .Imagen{
   width: 25%;
